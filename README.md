@@ -18,12 +18,12 @@ You may also see any lint errors in the console.
 Install neccessary node modules
 
 
- ##`About Project`
+ ## `About Project`
  This is my first project using react
- I used following:
-    1- Context API
-    2- React Router Dom v6
-    3- Framer Motion
+ # I used following:
+   # 1- Context API
+   # 2- React Router Dom v6
+   # 3- Framer Motion
 
 
 This project is included in Brad Traversy Udemy course "React Front To Back"
