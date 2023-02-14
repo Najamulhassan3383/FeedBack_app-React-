@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Card from './shared/Card'
-import { FaTimesCircle } from 'react-icons/fa';
+import { FaTimesCircle, FaEdit } from 'react-icons/fa';
 import {useContext} from 'react'
 import {FeedBackContext} from './context/FeedBackContext'
 
@@ -9,7 +9,7 @@ import {FeedBackContext} from './context/FeedBackContext'
 
 
 export default function FeedBack({r}) {
-  const { handleDelete} = useContext(FeedBackContext);
+  const { handleDelete, editFeedback} = useContext(FeedBackContext);
     
    
    
@@ -20,6 +20,9 @@ export default function FeedBack({r}) {
         <button className="close" onClick={()=> handleDelete(r.id)}>
           
             <FaTimesCircle color='purple'/>
+        </button>
+        <button className="edit">
+          <FaEdit color='purple' onClick={()=>{editFeedback(r)}}/>
         </button>
         <div className="text-display">{r.text}</div>
         

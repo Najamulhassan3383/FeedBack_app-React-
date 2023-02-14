@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './shared/Card'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from './shared/Button';
 import Rating from './Rating';
 import { useContext } from 'react';
@@ -12,7 +12,20 @@ export default function FeedBackForm({add}) {
     const [isDisabled, setIsDisabled] = useState(true);
     const [testShown, setTestShown] = useState("");
 
-    const {handleAdd} = useContext(FeedBackContext);
+    const {handleAdd,FeedbackEdit,UpdateFeedbackItem} = useContext(FeedBackContext);
+
+    useEffect(()=>{
+        if(FeedbackEdit.edit === true){
+            setText(FeedbackEdit.item.text);
+            setRating(FeedbackEdit.item.rating);
+            setIsDisabled(false);
+        }else{
+            setText('');
+            setRating(10);
+            setIsDisabled(true);
+        }
+
+    }, [FeedbackEdit])
 
     const handleChange = (e)=>{
         if(e.target.value === ''){
@@ -46,11 +59,19 @@ export default function FeedBackForm({add}) {
             text, 
             rating
         }
-        handleAdd(newEntry);
+
+        if(FeedbackEdit.edit === true){
+          UpdateFeedbackItem(FeedbackEdit.item.id, newEntry);
+        }
+        else{
+          handleAdd(newEntry);
         setText('');
         setRating(10);
         setIsDisabled(true);
         setTestShown("");
+        
+
+        }
         
 
       }
